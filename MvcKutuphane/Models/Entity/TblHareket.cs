@@ -23,14 +23,16 @@ namespace MvcKutuphane.Models.Entity
         public int id { get; set; }
         public Nullable<int> kitap { get; set; }
         public Nullable<int> uye { get; set; }
-        public Nullable<int> personel { get; set; }
+        public Nullable<byte> personel { get; set; }
         public Nullable<System.DateTime> alistarihi { get; set; }
         public Nullable<System.DateTime> iadetarihi { get; set; }
-        public Nullable<bool> durum { get; set; }
+        public Nullable<bool> islemdurum { get; set; }
+        public Nullable<System.DateTime> uyegetirtarih { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblCezalar> TblCezalar { get; set; }
         public virtual TblKitap TblKitap { get; set; }
         public virtual TblUyeler TblUyeler { get; set; }
+        public virtual TblPersonel TblPersonel { get; set; }
     }
 }

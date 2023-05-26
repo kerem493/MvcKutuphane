@@ -27,6 +27,8 @@ namespace MvcKutuphane.Models.Entity
         public string basımyil { get; set; }
         public string yayinevi { get; set; }
         public string sayfa { get; set; }
+        public Nullable<bool> durum { get; set; }
+        public string kitapresim { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblHareket> TblHareket { get; set; }

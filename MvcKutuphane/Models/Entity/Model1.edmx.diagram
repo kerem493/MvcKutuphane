@@ -19,6 +19,9 @@
         <AssociationConnector Association="DbKütüphaneModel.FK_TblHareket_TblUyeler" ManuallyRouted="false" />
         <AssociationConnector Association="DbKütüphaneModel.FK_TblKitap_TblKategori" ManuallyRouted="false" />
         <AssociationConnector Association="DbKütüphaneModel.FK_TblKitap_TblYazar" ManuallyRouted="false" />
+        <AssociationConnector Association="DbKütüphaneModel.FK_TblHareket_TblPersonel" />
+        <EntityTypeShape EntityType="DbKütüphaneModel.TblHakkimizda" Width="1.5" PointX="5.375" PointY="7.75" />
+        <EntityTypeShape EntityType="DbKütüphaneModel.Tbliletisim" Width="1.5" PointX="7.375" PointY="7.75" />
       </Diagram>
       <Diagram DiagramId="5a9f43a56d744838866036d292998755" Name="Diagram2" >
         <EntityTypeShape EntityType="DbKütüphaneModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" />
