@@ -70,6 +70,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ad" Type="varchar" MaxLength="50" />
+          <Property Name="durum" Type="bit" />
         </EntityType>
         <EntityType Name="TblKitap">
           <Key>
@@ -84,6 +85,17 @@
           <Property Name="sayfa" Type="varchar" MaxLength="50" />
           <Property Name="durum" Type="bit" />
           <Property Name="kitapresim" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="TblMesajlar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gonderen" Type="varchar" MaxLength="50" />
+          <Property Name="alici" Type="varchar" MaxLength="50" />
+          <Property Name="konu" Type="varchar" MaxLength="50" />
+          <Property Name="icerik" Type="varchar" MaxLength="500" />
+          <Property Name="tarih" Type="smalldatetime" />
         </EntityType>
         <EntityType Name="TblPersonel">
           <Key>
@@ -199,6 +211,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="EnFazlaKitapYazar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="DbKütüphaneModelStoreContainer">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblCezalar" EntityType="Self.TblCezalar" Schema="dbo" store:Type="Tables" />
@@ -208,6 +221,7 @@
           <EntitySet Name="TblKasa" EntityType="Self.TblKasa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblKategori" EntityType="Self.TblKategori" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblKitap" EntityType="Self.TblKitap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblMesajlar" EntityType="Self.TblMesajlar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblPersonel" EntityType="Self.TblPersonel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblUyeler" EntityType="Self.TblUyeler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblYazar" EntityType="Self.TblYazar" Schema="dbo" store:Type="Tables" />
@@ -299,6 +313,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="TblKitap" Relationship="Self.FK_TblKitap_TblKategori" FromRole="TblKategori" ToRole="TblKitap" />
+          <Property Name="durum" Type="Boolean" />
         </EntityType>
         <EntityType Name="TblKitap">
           <Key>
@@ -463,6 +478,8 @@
           </AssociationSet>
           <EntitySet Name="TblHakkimizda" EntityType="DbKütüphaneModel.TblHakkimizda" />
           <EntitySet Name="Tbliletisim" EntityType="DbKütüphaneModel.Tbliletisim" />
+          <FunctionImport Name="EnFazlaKitapYazar" ReturnType="Collection(String)" />
+          <EntitySet Name="TblMesajlar" EntityType="DbKütüphaneModel.TblMesajlar" />
         </EntityContainer>
         <Association Name="FK_TblHareket_TblPersonel">
           <End Type="DbKütüphaneModel.TblPersonel" Role="TblPersonel" Multiplicity="0..1" />
@@ -492,6 +509,17 @@
           <Property Name="mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="konu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="mesaj" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TblMesajlar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gonderen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="alici" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="konu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="icerik" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="tarih" Type="DateTime" Precision="0" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -548,6 +576,7 @@
           <EntitySetMapping Name="TblKategori">
             <EntityTypeMapping TypeName="DbKütüphaneModel.TblKategori">
               <MappingFragment StoreEntitySet="TblKategori">
+                <ScalarProperty Name="durum" ColumnName="durum" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="ad" ColumnName="ad" />
               </MappingFragment>
@@ -617,6 +646,19 @@
                 <ScalarProperty Name="mail" ColumnName="mail" />
                 <ScalarProperty Name="ad" ColumnName="ad" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="EnFazlaKitapYazar" FunctionName="DbKütüphaneModel.Store.EnFazlaKitapYazar" />
+          <EntitySetMapping Name="TblMesajlar">
+            <EntityTypeMapping TypeName="DbKütüphaneModel.TblMesajlar">
+              <MappingFragment StoreEntitySet="TblMesajlar">
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="icerik" ColumnName="icerik" />
+                <ScalarProperty Name="konu" ColumnName="konu" />
+                <ScalarProperty Name="alici" ColumnName="alici" />
+                <ScalarProperty Name="gonderen" ColumnName="gonderen" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -24,6 +24,10 @@ namespace MvcKutuphane.Controllers
 
         public ActionResult YazarEkle(TblYazar p)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("YazarEkle");
+            }
             db.TblYazar.Add(p);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -51,6 +55,14 @@ namespace MvcKutuphane.Controllers
             yzr.detay = p.detay;
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult YazarKitaplar(int id)
+        {
+            var yazar = db.TblKitap.Where(x=>x.yazar == id).ToList();
+            var yzrad = db.TblYazar.Where(y=>y.id==id).Select(z=>z.ad + " " + z.soyad).FirstOrDefault();
+            ViewBag.y1 = yzrad;
+            return View(yazar);
         }
     }
 }

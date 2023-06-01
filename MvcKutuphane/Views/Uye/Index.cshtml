@@ -12,13 +12,10 @@
         <th>Uye ID</th>
         <th>Uye Adı</th>
         <th>Uye Soyadı</th>
-        <th>Mail</th>
-        <th>Kullanıcı Adı</th>
-        <th>Şifresi</th>
-        <th>Telefon</th>
         <th>Okul</th>
         <th>Sil</th>
         <th>Güncelle</th>
+        <th>Kitap Geçmişi</th>
     </tr>
 
     @foreach (var uye in Model)
@@ -27,13 +24,10 @@
             <td>@uye.id</td>
             <td>@uye.ad</td>
             <td>@uye.soyad</td>
-            <td>@uye.mail</td>
-            <td>@uye.kullaniciadi</td>
-            <td>@uye.sifre</td>
-            <td>@uye.telefon</td>
             <td>@uye.okul</td>
             <td><a href="/Uye/UyeSil/@uye.id" class="btn btn-danger">Sil</a></td>
             <td><a href="/Uye/UyeGetir/@uye.id" class="btn btn-success">Güncelle</a></td>
+            <td><a href="/Uye/UyeKitapGecmis/@uye.id" class="btn btn-success">Kitap Geçmişi</a></td>
         </tr>
     }
 </table>

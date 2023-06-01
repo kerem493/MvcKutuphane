@@ -15,7 +15,7 @@
         @Html.TextBoxFor(k => k.TblKitap.ad, new { @class = "form-control" })
         <br />
         <label>Üye</label>
-        @Html.TextBoxFor(k => k.TblUyeler.ad, new { @class = "form-control" })
+        @Html.TextBoxFor(k => k.TblUyeler.id, new { @class = "form-control" })
         <br />
         <label>Personel</label>
         @Html.TextBoxFor(k => k.TblPersonel.personel, new { @class = "form-control" })
@@ -28,6 +28,10 @@
         <br />
         <label>Üyenin Getirdiği Tarihi</label>
         <input type="text" class="form-control" name="uyegetirtarih" value="@DateTime.Now.ToShortDateString()" />
+        <br />
+        <label>Geç Gelen Gün Sayısı</label>
+        <input type="text" id="Gecinput" class="form-control" value="@ViewBag.dgr" />
+
     </div>
     <div>
         <button class="btn btn-warning">Ödünç Kitabı Geri Al</button>

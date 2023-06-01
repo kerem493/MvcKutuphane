@@ -14,7 +14,7 @@ namespace MvcKutuphane.Controllers
         DbKütüphaneEntities db = new DbKütüphaneEntities();
         public ActionResult Index()
         {
-            var degerler = db.TblKategori.ToList();
+            var degerler = db.TblKategori.Where(x => x.durum == true).ToList();
             return View(degerler);
         }
         [HttpGet]
@@ -30,15 +30,13 @@ namespace MvcKutuphane.Controllers
             return View();
         }
 
-        public ActionResult KategoriSil(int id)
+        public ActionResult KategoriSil(int id)    // ilişkili tablolarda silme kullanılmaz! durum değerini false yaparak kaybedebiliriz.
         {
             var kategori = db.TblKategori.Find(id);
-            {
-                db.TblKategori.Remove(kategori);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
+            //db.TblKategori.Remove(kategori);
+            kategori.durum = false;
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         public ActionResult KategoriGetir(int id)
@@ -50,7 +48,7 @@ namespace MvcKutuphane.Controllers
         public ActionResult KategoriGuncelle(TblKategori p)
         {
             var ktg = db.TblKategori.Find(p.id);
-            ktg.ad = p.ad; 
+            ktg.ad = p.ad;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

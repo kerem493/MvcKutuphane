@@ -1,0 +1,56 @@
+﻿@model MvcKutuphane.Models.Entity.TblUyeler
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPanelim.cshtml";
+}
+
+
+@*Direk bu sayfadan çalıştıramayız!
+    Authorize kontrolü var kullanıcı adı ve şifre girilmesi gerekir.*@
+
+
+<h2>Kütüphane Üye Bilgileri</h2>
+
+@using (Html.BeginForm("Index2", "Panelim", FormMethod.Post))
+{
+
+<table class="table table-hover" style="margin-top:30px">
+    <tr>
+        <td><label style="font-weight:bolder">Mail :</label> @HttpContext.Current.User.Identity.Name</td>
+    </tr>
+    <tr>
+        <td>
+            @Html.TextBoxFor(x => x.ad, new { @class = "form-control" })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.TextBoxFor(x => x.soyad, new { @class = "form-control" })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.TextBoxFor(x => x.kullaniciadi, new { @class = "form-control" })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.TextBoxFor(x => x.sifre, new { @class = "form-control" })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.TextBoxFor(x => x.fotograf, new { @class = "form-control" })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.TextBoxFor(x => x.okul, new { @class = "form-control" })
+        </td>
+    </tr>
+    <tr>
+        <td><button class="btn btn-warning">Şifre Güncelle</button></td>
+    </tr>
+
+</table>
+}

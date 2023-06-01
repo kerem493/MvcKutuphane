@@ -1,0 +1,29 @@
+﻿@using MvcKutuphane.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model List<TblHareket>
+@{
+    ViewBag.Title = "UyeKitapGecmis";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>@ViewBag.u1</h2>
+<br />
+<table class="table table-danger">
+    <tr>
+        <th>Kitap Adı</th>
+        <th>Personel</th>
+        <th>Alış Tarihi</th>
+        <th>İade Tarihi</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.TblKitap.ad</td>
+            <td>@x.TblPersonel.personel</td>
+            <td>@Convert.ToDateTime(x.alistarihi).ToString("dd/MM/yyyy")</td>
+            <td>@Convert.ToDateTime(x.uyegetirtarih).ToString("dd/MM/yyyy")</td>
+        </tr>
+    }
+</table>
+

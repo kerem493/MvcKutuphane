@@ -12,6 +12,8 @@ namespace MvcKutuphane.Models.Entity
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class DbKütüphaneEntities : DbContext
     {
@@ -36,5 +38,11 @@ namespace MvcKutuphane.Models.Entity
         public virtual DbSet<TblYazar> TblYazar { get; set; }
         public virtual DbSet<TblHakkimizda> TblHakkimizda { get; set; }
         public virtual DbSet<Tbliletisim> Tbliletisim { get; set; }
+        public virtual DbSet<TblMesajlar> TblMesajlar { get; set; }
+    
+        public virtual ObjectResult<string> EnFazlaKitapYazar()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("EnFazlaKitapYazar");
+        }
     }
 }

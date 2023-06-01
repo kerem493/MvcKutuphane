@@ -8,12 +8,14 @@
 <form class="form-group" method="post">
     <div></div>
     <div style="margin-top:15px">
-        <label>Uye ID</label>
-        @Html.TextBoxFor(k => k.uye, new { @class = "form-control" })
+        <label>Uye Adı</label>
+        @*@Html.TextBoxFor(k => k.uye, new { @class = "form-control" })*@
+        @Html.DropDownListFor(k=>k.TblUyeler.id,(List<SelectListItem>)ViewBag.dgr1, new {@class="form-control"})
     </div>
     <div style="margin-top:15px">
-        <label>Kitap ID</label>
-        @Html.TextBoxFor(k => k.kitap, new { @class = "form-control" })
+        <label>Kitap Adı</label>
+        @*@Html.TextBoxFor(k => k.kitap, new { @class = "form-control" })*@
+        @Html.DropDownListFor(k => k.TblKitap.id, (List<SelectListItem>)ViewBag.dgr2, new { @class = "form-control" })
 
         @*@Html.DropDownListFor(k=>k.TblKitap.id, (List<SelectListItem>ViewBag.dgr1, new {@class = "form-control"}))*@     @*deneme kodu*@
 
@@ -21,8 +23,9 @@
 
     </div>
     <div style="margin-top:15px">
-        <label>Personel ID</label>
-        @Html.TextBoxFor(k => k.personel, new { @class = "form-control" })
+        <label>Personel Adı</label>
+        @*@Html.TextBoxFor(k => k.personel, new { @class = "form-control" })*@
+        @Html.DropDownListFor(k => k.TblPersonel.id, (List<SelectListItem>)ViewBag.dgr3, new { @class = "form-control" })
     </div>
     <div style="margin-top:15px">
         <label>Kitap Alış Tarihi</label>
