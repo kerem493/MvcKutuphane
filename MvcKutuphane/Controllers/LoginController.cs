@@ -8,6 +8,7 @@ using System.Web.Security;
 
 namespace MvcKutuphane.Controllers
 {
+    [AllowAnonymous]
     public class LoginController : Controller
     {
         // GET: Login
@@ -25,12 +26,6 @@ namespace MvcKutuphane.Controllers
             {
                 FormsAuthentication.SetAuthCookie(bilgiler.mail, false);
                 Session["Mail"] = bilgiler.mail.ToString();
-                //TempData["id"] = bilgiler.id.ToString();
-                //TempData["Ad"] = bilgiler.ad.ToString();
-                //TempData["Soyad"] = bilgiler.soyad.ToString();
-                //TempData["Kullanıcı Adı"] = bilgiler.kullaniciadi.ToString();
-                //TempData["Şifre"] = bilgiler.sifre.ToString();
-                //TempData["Okul"] = bilgiler.okul.ToString();
                 return RedirectToAction("Index", "Panelim");
             }
             else

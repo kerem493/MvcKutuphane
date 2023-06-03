@@ -8,6 +8,7 @@ using MvcKutuphane.Models.Siniflarim;
 
 namespace MvcKutuphane.Controllers
 {
+    [AllowAnonymous]
     public class vitrinController : Controller
     {
         // GET: vitrin

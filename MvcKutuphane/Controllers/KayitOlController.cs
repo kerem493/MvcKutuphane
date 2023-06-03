@@ -4,9 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MvcKutuphane.Models.Entity;
+using System.Web.Security;
 
 namespace MvcKutuphane.Controllers
 {
+    [AllowAnonymous]
     public class KayitOlController : Controller
     {
         // GET: KayitOl

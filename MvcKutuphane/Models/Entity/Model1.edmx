@@ -15,6 +15,15 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="TblAdmin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kullanici" Type="varchar" MaxLength="50" />
+          <Property Name="sifre" Type="varchar" MaxLength="50" />
+          <Property Name="yetki" Type="char" MaxLength="1" />
+        </EntityType>
         <EntityType Name="TblCezalar">
           <Key>
             <PropertyRef Name="id" />
@@ -25,6 +34,15 @@
           <Property Name="baslangictarihi" Type="smalldatetime" />
           <Property Name="bitistarihi" Type="smalldatetime" />
           <Property Name="para" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="TblDuyurular">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kategori" Type="varchar" MaxLength="50" />
+          <Property Name="icerik" Type="varchar" MaxLength="200" />
+          <Property Name="tarih" Type="datetime" />
         </EntityType>
         <EntityType Name="TblHakkimizda">
           <Key>
@@ -214,7 +232,9 @@
         <Function Name="EnFazlaKitapYazar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="DbKütüphaneModelStoreContainer">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblAdmin" EntityType="Self.TblAdmin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblCezalar" EntityType="Self.TblCezalar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblDuyurular" EntityType="Self.TblDuyurular" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblHakkimizda" EntityType="Self.TblHakkimizda" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblHareket" EntityType="Self.TblHareket" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbliletisim" EntityType="Self.Tbliletisim" Schema="dbo" store:Type="Tables" />
@@ -480,6 +500,8 @@
           <EntitySet Name="Tbliletisim" EntityType="DbKütüphaneModel.Tbliletisim" />
           <FunctionImport Name="EnFazlaKitapYazar" ReturnType="Collection(String)" />
           <EntitySet Name="TblMesajlar" EntityType="DbKütüphaneModel.TblMesajlar" />
+          <EntitySet Name="TblDuyurular" EntityType="DbKütüphaneModel.TblDuyurular" />
+          <EntitySet Name="TblAdmin" EntityType="DbKütüphaneModel.TblAdmin" />
         </EntityContainer>
         <Association Name="FK_TblHareket_TblPersonel">
           <End Type="DbKütüphaneModel.TblPersonel" Role="TblPersonel" Multiplicity="0..1" />
@@ -520,6 +542,24 @@
           <Property Name="konu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="icerik" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="tarih" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="TblDuyurular">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kategori" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="icerik" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="tarih" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TblAdmin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kullanici" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="yetki" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -658,6 +698,26 @@
                 <ScalarProperty Name="konu" ColumnName="konu" />
                 <ScalarProperty Name="alici" ColumnName="alici" />
                 <ScalarProperty Name="gonderen" ColumnName="gonderen" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblDuyurular">
+            <EntityTypeMapping TypeName="DbKütüphaneModel.TblDuyurular">
+              <MappingFragment StoreEntitySet="TblDuyurular">
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="icerik" ColumnName="icerik" />
+                <ScalarProperty Name="kategori" ColumnName="kategori" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblAdmin">
+            <EntityTypeMapping TypeName="DbKütüphaneModel.TblAdmin">
+              <MappingFragment StoreEntitySet="TblAdmin">
+                <ScalarProperty Name="yetki" ColumnName="yetki" />
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+                <ScalarProperty Name="kullanici" ColumnName="kullanici" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

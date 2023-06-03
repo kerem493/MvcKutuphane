@@ -49,25 +49,28 @@ body {font-family: "Lato", sans-serif;}
 <body>
 
     <div class="sidebar">
-        <a href="#"><i class="glyphicon glyphicon-home"></i> &nbsp; Ana Sayfa </a>
+        <a href="/istatistik/index/"><i class="glyphicon glyphicon-home"></i> &nbsp; Ana Sayfa </a>
         <a href="/Kategori/Index"><i class="glyphicon glyphicon-list"></i> &nbsp; Kategori </a>
         <a href="/Kitap/Index/"><i class="glyphicon glyphicon-book"></i> &nbsp; Kitaplar </a>
         <a href="/Yazar/Index/"><i class="glyphicon glyphicon-pencil"></i> &nbsp; Yazarlar </a>
         <a href="/Uye/Index/"><i class="glyphicon glyphicon-user"></i> &nbsp; Üyeler </a>
         <a href="/Personel/Index/"><i class="glyphicon glyphicon-tower"></i> &nbsp; Personeller </a>
+        @if (User.IsInRole("A"))
+        {
         <a href="~/Odunc/OduncVer/"><i class="glyphicon glyphicon-circle-arrow-right"></i> &nbsp; Ödünç Kitap Ver </a>
         <a href="/Odunc/Index/"><i class="glyphicon glyphicon-circle-arrow-left"></i> &nbsp; Ödünç Kitap Al </a>
+        }
         <a href="/istatistik/index/"><i class="glyphicon glyphicon-sort"></i> &nbsp; İstatistikler </a>
-        <a href="#"><i class="glyphicon glyphicon-euro"></i> &nbsp; Kasa </a>
+        <a href="/duyuru/index/"><i class="glyphicon glyphicon-earphone"></i> &nbsp; Duyurular </a>
         <a href="/islem/index/"><i class="glyphicon glyphicon-dashboard"></i> &nbsp; İşlemler </a>
         <a href="/istatistik/hava/"><i class="glyphicon glyphicon-cloud"></i> &nbsp; Hava Durumu </a>
         <a href="/istatistik/havakart/"><i class="glyphicon glyphicon-plus"></i> &nbsp; Hava Kartları </a>
         <a href="/istatistik/galeri/"><i class="glyphicon glyphicon-picture"></i> &nbsp; Galeri </a>
         <a href="/istatistik/linqkart/"><i class="glyphicon glyphicon-bookmark"></i> &nbsp; Linq Kartlar </a>
         <a href="/vitrin/index/"><i class="glyphicon glyphicon-gift"></i> &nbsp; Vitrin </a>
+        <a href="/grafik/index/"><i class="glyphicon glyphicon-console"></i> &nbsp; Grafikler </a>
         <a href="#"><i class="glyphicon glyphicon-cog"></i> &nbsp; Ayarlar </a>
-        <a href="#"><i class="glyphicon glyphicon-phone"></i> &nbsp; Yardım </a>
-        <a href="#"><i class="glyphicon glyphicon-remove-sign"></i> &nbsp; Çıkış </a>
+        <a href="/adminlogin/login/"><i class="glyphicon glyphicon-remove-sign"></i> &nbsp; Çıkış </a>
     </div>
 
     <div class="main">

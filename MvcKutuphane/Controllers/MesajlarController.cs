@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
 using MvcKutuphane.Models.Entity;
@@ -37,6 +38,18 @@ namespace MvcKutuphane.Controllers
             db.TblMesajlar.Add(t);
             db.SaveChanges();
             return RedirectToAction("giden","mesajlar");
+        }
+
+        public PartialViewResult Partial1()
+        {
+            var uyemail = (string)Session["Mail"].ToString();
+            var gelensayisi = db.TblMesajlar.Where(x => x.alici == uyemail).Count();
+            var gidensayisi = db.TblMesajlar.Where(x => x.gonderen == uyemail).Count();
+
+            ViewBag.d1 = gelensayisi;
+            ViewBag.d2 = gidensayisi;
+
+            return PartialView();
         }
     }
 }
